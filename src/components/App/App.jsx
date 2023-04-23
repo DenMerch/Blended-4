@@ -15,19 +15,18 @@ import {
 export const App = () => {
   const [todos, setTodos] = useState(() => {
     return JSON.parse(localStorage.getItem('todos')) || [];
-  })
+  });
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos))
-  }, [todos])
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
   const addTodo = text => {
     const todo = {
       id: nanoid(),
       text,
     };
 
-    setTodos((todos) => (
-      [...todos, todo]
-    ));
+    setTodos(todos => [...todos, todo]);
   };
 
   const handleSubmit = data => {
@@ -35,10 +34,9 @@ export const App = () => {
   };
 
   const deleteTodo = id => {
-    setTodos((todos) => {
-      return todos.filter(todo => todo.id !== id)
-    })
-
+    setTodos(todos => {
+      return todos.filter(todo => todo.id !== id);
+    });
   };
   return (
     <>
@@ -68,7 +66,4 @@ export const App = () => {
       </Section>
     </>
   );
-}
-
-
-
+};
