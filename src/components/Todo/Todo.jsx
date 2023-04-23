@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { RiDeleteBinLine } from 'react-icons/ri';
+import { RiDeleteBinLine, RiEdit2Line } from 'react-icons/ri';
 import { Text } from 'components';
-import { DeleteButton, TodoWrapper } from './Todo.styled';
-import { deleteTodo } from 'redux/todoSlice'
+import { DeleteButton, EditButton, TodoWrapper } from './Todo.styled';
+import { deleteTodo, addCurrentTodo } from 'redux/todoSlice'
 
-export const Todo = ({ text, counter, id }) => {
+export const Todo = ({ text, counter, id, setEditing }) => {
   const dispatch = useDispatch();
   return (
     <>
@@ -13,6 +13,11 @@ export const Todo = ({ text, counter, id }) => {
           TODO #{counter}
         </Text>
         <Text>{text}</Text>
+        <EditButton type="button" 
+        onClick={() => {setEditing(true);
+        dispatch(addCurrentTodo({text,id}))}}>
+          <RiEdit2Line size={24} />
+        </EditButton>
         <DeleteButton type="button" onClick={() => dispatch(deleteTodo(id))}>
           <RiDeleteBinLine size={24} />
         </DeleteButton>

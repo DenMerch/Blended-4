@@ -6,7 +6,7 @@ import {
 import { useSelector } from 'react-redux';
 import { selectTodos } from 'redux/selected';
 
-export const TodoList = () => {
+export const TodoList = ({setEditing}) => {
     const todos = useSelector(selectTodos);
 
     return <Grid>
@@ -17,6 +17,7 @@ export const TodoList = () => {
                     id={todo.id}
                     text={todo.text}
                     counter={index + 1}
+                    setEditing={setEditing}
                   />
                 </GridItem>
               ))}
