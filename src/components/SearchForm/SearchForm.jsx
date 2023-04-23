@@ -7,7 +7,7 @@ import { selectTodos } from 'redux/selected';
 import { nanoid } from 'nanoid';
 import { addTodo } from 'redux/todoSlice';
 
-export const SearchForm = ({ onSubmit }) => {
+export const SearchForm = () => {
   const dispatch = useDispatch();
   const todos = useSelector(selectTodos);
 
@@ -31,8 +31,7 @@ export const SearchForm = ({ onSubmit }) => {
 
     dispatch(addTodo(todo));
 
-    onSubmit(query);
-
+    
     setQuery('');
   };
   return (
